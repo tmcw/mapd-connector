@@ -17611,6 +17611,28 @@ module.exports =
 	        });
 	      });
 	    });
+	    this.clearCpuMemoryAsync = this.handleErrors(function () {
+	      return new Promise(function (resolve, reject) {
+	        _this.clearCpuMemory(function (err, result) {
+	          if (err) {
+	            reject(err);
+	          } else {
+	            resolve(result);
+	          }
+	        });
+	      });
+	    });
+	    this.clearGpuMemoryAsync = this.handleErrors(function () {
+	      return new Promise(function (resolve, reject) {
+	        _this.clearGpuMemory(function (err, result) {
+	          if (err) {
+	            reject(err);
+	          } else {
+	            resolve(result);
+	          }
+	        });
+	      });
+	    });
 
 	    this._host = null;
 	    this._user = null;
@@ -18997,6 +19019,28 @@ module.exports =
 	          reject(e);
 	        }
 	      });
+	    }
+
+	    /**
+	     * Clears cpu memory server-side.
+	     * @param {Function} callback A callback that takes (`err, results`).
+	     */
+
+	  }, {
+	    key: "clearCpuMemory",
+	    value: function clearCpuMemory(callback) {
+	      this._client[0].clear_cpu_memory(this._sessionId[0], callback);
+	    }
+	  }, {
+	    key: "clearGpuMemory",
+
+
+	    /**
+	     * Clears gpu memory server-side.
+	     * @param {Function} callback A callback that takes (`err, results`).
+	     */
+	    value: function clearGpuMemory(callback) {
+	      this._client[0].clear_gpu_memory(this._sessionId[0], callback);
 	    }
 	  }, {
 	    key: "isTimeoutError",
