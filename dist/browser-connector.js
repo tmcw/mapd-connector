@@ -218,6 +218,18 @@
 	      });
 	    };
 
+	    this.disconnectAsync = function () {
+	      return new Promise(function (resolve, reject) {
+	        _this.disconnect(function (error, con) {
+	          if (error) {
+	            reject(error);
+	          } else {
+	            resolve(con);
+	          }
+	        });
+	      });
+	    };
+
 	    this.updateQueryTimes = function (conId, queryId, estimatedQueryTime, execution_time_ms) {
 	      _this.queryTimes[queryId] = execution_time_ms;
 	    };
